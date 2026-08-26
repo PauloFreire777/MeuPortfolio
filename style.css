@@ -580,6 +580,7 @@ ul { list-style: none; }
   color: var(--text-secondary);
   margin-bottom: 1rem;
   font-size: .97rem;
+  text-align: justify;
 }
 .sobre-text strong { color: var(--green); }
 
