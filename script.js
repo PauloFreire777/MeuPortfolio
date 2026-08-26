@@ -21,8 +21,8 @@
   function highlightActiveLink() {
     let current = '';
     
-    // Verifica primeiro se rolou até o final exato da página
-    const bottomOfPage = (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 5;
+    // Verifica primeiro se rolou até o final exato da página (com margem de erro de 10px para arredondamentos)
+    const bottomOfPage = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 10;
     
     if (bottomOfPage) {
       // Se estiver no fundo, a seção atual é forçada a ser a última
