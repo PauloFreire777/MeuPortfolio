@@ -34,8 +34,8 @@
 
   <!-- HERO -->
   <section class="hero" id="hero" aria-label="Apresentação">
+    <canvas id="matrix-canvas" aria-hidden="true"></canvas>
     <div class="hero-bg-grid" aria-hidden="true"></div>
-    <div class="hero-scan-line" aria-hidden="true"></div>
     <div class="hero-terminal" role="img" aria-label="Terminal de apresentação">
       <div class="terminal-bar">
         <span class="dot dot-red"></span>
@@ -475,5 +475,104 @@
   </footer>
 
   <script src="script.js"></script>
+
+  <!-- Digital rain — hero only, binary/hex, professional -->
+  <script>
+    (function initMatrix() {
+      const canvas = document.getElementById('matrix-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      const CHARS = '01010110001101001111000110100111100011010110100101001011';
+      const HEX   = '0123456789ABCDEF';
+      const ALL   = (CHARS + HEX).split('');
+
+      const FONT_SIZE  = 16;
+      const ACTIVE_PCT = 0.30;
+      const TRAIL_LEN  = 4;
+      const SPEED_MS   = 90;
+
+      let cols, streams;
+
+      function resize() {
+        const hero   = document.getElementById('hero');
+        canvas.width  = hero.offsetWidth;
+        canvas.height = hero.offsetHeight;
+        cols = Math.floor(canvas.width / FONT_SIZE);
+        initStreams();
+      }
+
+      function initStreams() {
+        streams = Array.from({ length: cols }, () => ({
+          y:      Math.random() * -(canvas.height / FONT_SIZE) * 2,
+          active: Math.random() < ACTIVE_PCT,
+          alpha:  0.04 + Math.random() * 0.10,
+          speed:  0.6  + Math.random() * 0.8,
+          delay:  Math.floor(Math.random() * 120),
+          tick:   0,
+        }));
+      }
+
+      function draw() {
+        ctx.fillStyle = 'rgba(7, 11, 15, 0.28)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.font = FONT_SIZE + 'px "JetBrains Mono", monospace';
+
+        streams.forEach((s, i) => {
+          if (!s.active) return;
+          s.tick++;
+          if (s.tick < s.delay) return;
+
+          const x    = i * FONT_SIZE;
+          const posY = s.y * FONT_SIZE;
+
+          const fadeZone = canvas.height * 0.60;
+          const distFade = posY > fadeZone
+            ? 1 - (posY - fadeZone) / (canvas.height - fadeZone)
+            : 1;
+          const alpha = s.alpha * distFade;
+          if (alpha < 0.01) { s.y = resetStream(); return; }
+
+          ctx.fillStyle = `rgba(0, 245, 160, ${Math.min(alpha * 2.2, 0.35)})`;
+          ctx.fillText(ALL[Math.floor(Math.random() * ALL.length)], x, posY);
+
+          for (let t = 1; t <= TRAIL_LEN; t++) {
+            const ty     = posY - t * FONT_SIZE;
+            const tAlpha = alpha * (1 - t / (TRAIL_LEN + 1));
+            if (tAlpha < 0.01 || ty < 0) break;
+            ctx.fillStyle = `rgba(0, 245, 160, ${tAlpha})`;
+            ctx.fillText(ALL[Math.floor(Math.random() * ALL.length)], x, ty);
+          }
+
+          s.y += s.speed;
+
+          if (posY > canvas.height + FONT_SIZE * TRAIL_LEN) {
+            s.y     = resetStream();
+            s.active = Math.random() < ACTIVE_PCT;
+            s.alpha  = 0.04 + Math.random() * 0.10;
+            s.speed  = 0.6  + Math.random() * 0.8;
+            s.delay  = 0;
+          }
+        });
+
+        streams.forEach(s => {
+          if (!s.active && Math.random() < 0.001) {
+            s.active = true;
+            s.y      = 0;
+            s.alpha  = 0.04 + Math.random() * 0.10;
+            s.speed  = 0.6  + Math.random() * 0.8;
+          }
+        });
+      }
+
+      function resetStream() {
+        return Math.random() * -(canvas.height / FONT_SIZE);
+      }
+
+      resize();
+      window.addEventListener('resize', resize);
+      setInterval(draw, SPEED_MS);
+    })();
+  </script>
 </body>
 </html>
