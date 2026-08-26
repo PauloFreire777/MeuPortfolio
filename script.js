@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    PAULO FREIRE — PORTFOLIO
    script.js — Interactivity & Animations
    ============================================================ */
@@ -107,27 +107,38 @@
   const elements = document.querySelectorAll('.reveal');
   if (!elements.length) return;
 
+  function activateElement(el, delay) {
+    setTimeout(() => el.classList.add('visible'), delay);
+  }
+
   const observer = new IntersectionObserver(
     (entries) => {
-      entries.forEach((entry, i) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           /* Stagger siblings inside the same parent */
-          const siblings = Array.from(entry.target.parentElement.querySelectorAll('.reveal'));
-          const idx = siblings.indexOf(entry.target);
-          const delay = idx * 80;
-
-          setTimeout(() => {
-            entry.target.classList.add('visible');
-          }, delay);
-
+          const siblings = Array.from(
+            entry.target.parentElement.querySelectorAll('.reveal:not(.visible)')
+          );
+          const idx = Math.max(siblings.indexOf(entry.target), 0);
+          activateElement(entry.target, idx * 80);
           observer.unobserve(entry.target);
         }
       });
     },
-    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    /* rootMargin positivo no topo garante que elementos já visíveis disparem */
+    { threshold: 0.05, rootMargin: '60px 0px 0px 0px' }
   );
 
-  elements.forEach(el => observer.observe(el));
+  /* Primeira passagem: ativa elementos já visíveis sem esperar scroll */
+  elements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    const alreadyVisible = rect.top < window.innerHeight && rect.bottom > 0;
+    if (alreadyVisible) {
+      activateElement(el, 0);
+    } else {
+      observer.observe(el);
+    }
+  });
 })();
 
 /* ── 4. SKILL BARS ──────────────────────────────────────── */

@@ -191,14 +191,23 @@ ul { list-style: none; }
 }
 
 /* ── SCROLL REVEAL ───────────────────────────────────────── */
+
+/* Fallback: se o JS não adicionar .visible em 1.5s, o elemento aparece */
+@keyframes reveal-fallback {
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity .65s ease, transform .65s ease;
+  /* Garante visibilidade mesmo se o JS falhar */
+  animation: reveal-fallback 0s 1.5s forwards;
 }
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+  animation: none; /* JS assumiu o controle, cancela o fallback */
 }
 
 /* ════════════════════════════════════════════════════════════
