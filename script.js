@@ -20,10 +20,21 @@
   /* Active nav link based on scroll position */
   function highlightActiveLink() {
     let current = '';
-    sections.forEach(sec => {
-      const top = sec.offsetTop - 100;
-      if (window.scrollY >= top) current = sec.id;
-    });
+    
+    // Verifica primeiro se rolou até o final exato da página
+    const bottomOfPage = (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 5;
+    
+    if (bottomOfPage) {
+      // Se estiver no fundo, a seção atual é forçada a ser a última
+      current = sections[sections.length - 1].id;
+    } else {
+      // Se não, usa a verificação padrão de top offset
+      sections.forEach(sec => {
+        const top = sec.offsetTop - 100;
+        if (window.scrollY >= top) current = sec.id;
+      });
+    }
+
     navLinks.forEach(link => {
       link.classList.toggle('active', link.getAttribute('href') === '#' + current);
     });
