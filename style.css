@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    PAULO FREIRE — PORTFOLIO
    style.css — Dark Mode Geek Theme
    ============================================================ */
@@ -472,20 +472,37 @@ ul { list-style: none; }
   justify-content: center;
 }
 .avatar-inner {
-  width: 140px; height: 140px;
-  background: linear-gradient(135deg, var(--bg-3) 0%, #232840 100%);
+  width: 160px; height: 160px;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid rgba(0,245,160,.3);
-  box-shadow: 0 0 30px rgba(0,245,160,.15);
+  border: 3px solid rgba(0,245,160,.45);
+  box-shadow:
+    0 0 0 6px rgba(0,245,160,.08),
+    0 0 40px rgba(0,245,160,.2);
   position: relative;
   z-index: 1;
+  overflow: hidden;         /* garante que a foto respeite o border-radius */
+  background: var(--bg-3); /* fallback enquanto a foto carrega */
+  transition: box-shadow var(--t-normal), transform var(--t-normal);
 }
-.avatar-icon {
-  font-size: 3.5rem;
-  color: var(--green);
+.avatar-inner:hover {
+  box-shadow:
+    0 0 0 6px rgba(0,245,160,.15),
+    0 0 60px rgba(0,245,160,.35);
+  transform: scale(1.04);
+}
+
+/* Foto de perfil */
+.avatar-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* recorta sem distorcer */
+  object-position: center top; /* prioriza o rosto */
+  display: block;
+  border-radius: 50%;
+  transition: transform var(--t-slow);
+}
+.avatar-inner:hover .avatar-photo {
+  transform: scale(1.06);
 }
 
 .avatar-ring {
