@@ -1,8 +1,8 @@
 ﻿<div align="center">
 
-# Paulo Eduardo Freire — Portfolio Pessoal
+# Paulo Eduardo Freire — Portfólio Pessoal
 
-**Bacharel em Direito | Estudante de Ciencia da Computacao | Dev em formacao**
+**Bacharel em Direito | Estudante de Ciência da Computação | Dev em formação**
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-00f5a0?style=for-the-badge&logo=github&logoColor=white)](https://PauloFreire777.github.io/MeuPortfolio)
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
@@ -15,22 +15,22 @@
 
 ## Sobre o projeto
 
-Este e meu portfolio pessoal, desenvolvido do zero com HTML, CSS e JavaScript puro, sem frameworks ou dependencias externas alem das fontes e icones. O objetivo foi criar uma pagina que refletisse minha identidade: alguem que vem do direito, gosta de tecnologia e esta construindo sua trajetoria na computacao com consistencia.
+Este é meu portfólio pessoal, desenvolvido do zero com HTML, CSS e JavaScript puro, sem frameworks ou dependências externas além das fontes e ícones. O objetivo foi criar uma página que refletisse minha identidade: alguém que vem do direito, gosta de tecnologia e está construindo sua trajetória na computação com consistência.
 
-O design foi pensado no estilo **dark mode geek**, com referencias ao universo de desenvolvimento de sistemas, terminais e distribuicoes Linux, algo que representa bem quem eu sou fora do codigo tambem.
+O design foi pensado no estilo **dark mode geek**, com referências ao universo de desenvolvimento de sistemas, terminais e distribuições Linux, algo que representa bem quem eu sou fora do código também.
 
 ---
 
 ## Funcionalidades
 
-- **Efeito de digitacao** no hero, com frases rotativas animadas
-- **Scroll reveal** suave em todas as secoes ao rolar a pagina
+- **Efeito de digitação** no hero, com frases rotativas animadas
+- **Scroll reveal** suave em todas as seções ao rolar a página
 - **Barras de habilidades** animadas ao entrar na viewport
-- **Timeline** interativa com a trajetoria profissional
-- **Cards de projetos** com efeito de elevacao no hover
+- **Timeline** interativa com a trajetória profissional
+- **Cards de projetos** com efeito de elevação no hover
 - **Menu responsivo** com hamburger para mobile
 - **Design totalmente responsivo** (mobile-first)
-- Compativel com deploy direto no **GitHub Pages**
+- Compatível com deploy direto no **GitHub Pages**
 
 ---
 
@@ -38,11 +38,11 @@ O design foi pensado no estilo **dark mode geek**, com referencias ao universo d
 
 | Tecnologia | Uso |
 |---|---|
-| HTML5 | Estrutura semantica e acessivel |
-| CSS3 | Estilizacao, animacoes e responsividade |
+| HTML5 | Estrutura semântica e acessível |
+| CSS3 | Estilização, animações e responsividade |
 | JavaScript (Vanilla) | Interatividade, typing effect e scroll reveal |
 | Google Fonts | Fontes JetBrains Mono e Inter |
-| Font Awesome | Icones da interface |
+| Font Awesome | Ícones da interface |
 | GitHub Pages | Hospedagem e deploy |
 
 ---
@@ -51,9 +51,9 @@ O design foi pensado no estilo **dark mode geek**, com referencias ao universo d
 
 ```
 MeuPortfolio/
-├── index.html   # Estrutura da pagina
-├── style.css    # Estilos, animacoes e responsividade
-├── script.js    # Interatividade e animacoes JS
+├── index.html   # Estrutura da página
+├── style.css    # Estilos, animações e responsividade
+├── script.js    # Interatividade e animações JS
 ├── foto.jpg     # Foto de perfil
 └── README.md    # Este arquivo
 ```
@@ -62,7 +62,7 @@ MeuPortfolio/
 
 ## Como rodar localmente
 
-Nao e necessario instalar nada. Basta clonar o repositorio e abrir o arquivo no navegador:
+Não é necessário instalar nada. Basta clonar o repositório e abrir o arquivo no navegador:
 
 ```bash
 git clone https://github.com/PauloFreire777/MeuPortfolio.git
@@ -70,16 +70,16 @@ cd MeuPortfolio
 # Abra o index.html no seu navegador
 ```
 
-Ou, se preferir usar um servidor local com o VS Code, instale a extensao **Live Server** e clique em "Open with Live Server".
+Ou, se preferir usar um servidor local com o VS Code, instale a extensão **Live Server** e clique em "Open with Live Server".
 
 ---
 
-## Secoes da pagina
+## Seções da página
 
-- **Hero** — Apresentacao no formato de terminal com efeito de digitacao
-- **Sobre mim** — Minha historia, formacao e o que me trouxe ate a tecnologia
-- **Habilidades** — Conhecimentos tecnicos com barras de progresso e tags de ferramentas
-- **Experiencia** — Timeline com minha trajetoria profissional no setor publico
+- **Hero** — Apresentação no formato de terminal com efeito de digitação
+- **Sobre mim** — Minha história, formação e o que me trouxe até a tecnologia
+- **Habilidades** — Conhecimentos técnicos com barras de progresso e tags de ferramentas
+- **Experiência** — Timeline com minha trajetória profissional no setor público
 - **Projetos** — Vitrine dos projetos que estou construindo
 - **Contato** — Links para e-mail, LinkedIn e GitHub
 
