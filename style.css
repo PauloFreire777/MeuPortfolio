@@ -472,6 +472,8 @@ ul { list-style: none; }
   position: relative;
   display: flex;
   justify-content: center;
+  padding: 2rem 1.5rem; /* espaço para os badges acima e abaixo */
+  overflow: visible;
 }
 .avatar-frame {
   position: relative;
@@ -479,6 +481,7 @@ ul { list-style: none; }
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: visible; /* permite badges saírem do frame */
 }
 .avatar-inner {
   width: 160px; height: 160px;
@@ -548,16 +551,17 @@ ul { list-style: none; }
   gap: .4rem;
   border: 1px solid;
   white-space: nowrap;
+  z-index: 10; /* sempre na frente da foto */
 }
 .badge-cs {
-  top: 10px; right: -20px;
+  top: -18px; right: -10px;   /* acima e à direita do frame */
   background: rgba(0,245,160,.1);
   border-color: rgba(0,245,160,.35);
   color: var(--green);
   animation: float 4s ease-in-out infinite;
 }
 .badge-law {
-  bottom: 10px; left: -20px;
+  bottom: -22px; left: -10px; /* abaixo e à esquerda do frame */
   background: rgba(157,78,221,.1);
   border-color: rgba(157,78,221,.35);
   color: var(--purple);
