@@ -53,11 +53,11 @@
   if (!target) return;
 
   const phrases = [
-    'Estudante de Ciencia da Computacao',
+    'Estudante de Ciência da Computação',
+    'Entusiasta de Cibersegurança',
     'Bacharel em Direito',
-    'Dev Front-end em formacao',
-    'Entusiasta de Linux & Open Source',
-    'Apaixonado por resolver problemas',
+    'Aprendiz de Segurança Digital',
+    'Fã de Linux e Open Source',
   ];
 
   let phraseIndex = 0;
