@@ -471,9 +471,9 @@ ul { list-style: none; }
 .sobre-avatar {
   position: relative;
   display: flex;
-  justify-content: center;
-  padding: 2rem 1.5rem; /* espaço para os badges acima e abaixo */
-  overflow: visible;
+  flex-direction: column; /* foto em cima, badges embaixo */
+  align-items: center;
+  gap: 1.25rem;           /* espaço entre a foto e os badges */
 }
 .avatar-frame {
   position: relative;
@@ -481,7 +481,7 @@ ul { list-style: none; }
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: visible; /* permite badges saírem do frame */
+  flex-shrink: 0;
 }
 .avatar-inner {
   width: 160px; height: 160px;
@@ -492,8 +492,8 @@ ul { list-style: none; }
     0 0 40px rgba(0,245,160,.2);
   position: relative;
   z-index: 1;
-  overflow: hidden;         /* garante que a foto respeite o border-radius */
-  background: var(--bg-3); /* fallback enquanto a foto carrega */
+  overflow: hidden;
+  background: var(--bg-3);
   transition: box-shadow var(--t-normal), transform var(--t-normal);
 }
 .avatar-inner:hover {
@@ -507,8 +507,8 @@ ul { list-style: none; }
 .avatar-photo {
   width: 100%;
   height: 100%;
-  object-fit: cover;        /* recorta sem distorcer */
-  object-position: center top; /* prioriza o rosto */
+  object-fit: cover;
+  object-position: center top;
   display: block;
   border-radius: 50%;
   transition: transform var(--t-slow);
@@ -539,29 +539,32 @@ ul { list-style: none; }
   to   { transform: rotate(360deg); }
 }
 
-/* Floating badges */
+/* Badges — agora em fluxo normal abaixo da foto */
+.avatar-badges {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .6rem;
+}
+
 .float-badge {
-  position: absolute;
   font-family: var(--font-mono);
   font-size: .72rem;
-  padding: .35rem .75rem;
+  padding: .35rem .85rem;
   border-radius: 100px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: .4rem;
   border: 1px solid;
   white-space: nowrap;
-  z-index: 10; /* sempre na frente da foto */
 }
 .badge-cs {
-  top: -18px; right: -10px;   /* acima e à direita do frame */
   background: rgba(0,245,160,.1);
   border-color: rgba(0,245,160,.35);
   color: var(--green);
   animation: float 4s ease-in-out infinite;
 }
 .badge-law {
-  bottom: -22px; left: -10px; /* abaixo e à esquerda do frame */
   background: rgba(157,78,221,.1);
   border-color: rgba(157,78,221,.35);
   color: var(--purple);
@@ -569,7 +572,7 @@ ul { list-style: none; }
 }
 @keyframes float {
   0%,100% { transform: translateY(0); }
-  50%      { transform: translateY(-8px); }
+  50%      { transform: translateY(-6px); }
 }
 
 /* ── Sobre content ── */
